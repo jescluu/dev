@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+
+<body>
+<script>
+
+//Computer needs to produce a random choice of Rock, Paper or Scissor.
+
+let scoreboard = {
+    humanScore: 0,
+    computerScore: 0
+};
+
+const numberToName = {
+    0: "rock",
+    1: "paper",
+    2: "scissors"
+};
+
+const resultMapping ={
+    "rock": {
+        "rock": 0,
+        "scissors": 1,
+        "paper": -1
+    },
+    "scissors": {
+        "rock": -1,
+        "scissors": 0,
+        "paper": 1
+    },
+    "paper": {
+        "rock": 1,
+        "scissors": -1,
+        "paper": 0
+    }
+};
+
+    function getRandomChoice(max){
+    return Math.floor(Math.random() * max);
+}
+
+function playRound() {
+
+    const getComputerChoice = numberToName[getRandomChoice(3)];
+    console.log({getComputerChoice});
+
+    let validChoices = ["rock", "paper", "scissors"];
+    let getHumanChoice;
+
+    while (!validChoices.includes(getHumanChoice)){
+        getHumanChoice = prompt("Pick Rock, Paper or Scissors").toLowerCase();
+    }
+
+    console.log(getHumanChoice);
+
+    const resultNumber = resultMapping[getHumanChoice][getComputerChoice];
+    let roundResult = "";
+
+//Assign a variable 0-2 to Rock, Paper and Scissor and return the value as a string.
+
+//Assign the random variable to getComputerChoice
+
+//Create human input called getHumanChoice
+
+//define a mapping from userChoice compared to computerChoice to determine win, loss or draw.
+
+//resultMapping["rock"]
+//resultMapping.rock
+//const value = "rock"
+
+//resultMapping[value]
+
+if (resultNumber === -1) {
+    console.log(`You lost! ${getComputerChoice} beats ${getHumanChoice}.`);
+    scoreboard.computerScore += 1;
+} else if (resultNumber === 1) {
+    console.log(`You won! ${getHumanChoice} beats ${getComputerChoice}.`);
+    scoreboard.humanScore += 1;
+} else {
+    console.log(`The game is a tie! You both chose ${getHumanChoice}.`);
+}
+
+alert(roundResult);
+//
+
+alert(`Current score:\nHuman: ${scoreboard.humanScore} - Computer: ${scoreboard.computerScore}`);
+
+}
+
+ function startGame() {
+    let playAgain = true;
+
+    while (playAgain) {
+        playRound();
+
+
+        let userResponse = prompt("Play again? (yes or no)").toLowerCase();
+        playAgain = (userResponse ==='yes')
+    }
+
+    console.log("Final Scoreboard:", scoreboard);
+        
+ }
+
+startGame();
+
+
+//Limit the choice that a user can input to Rock, Paper or Scissor
+
+//Input for human should be case insensitive
+
+//Create a score card to add the number of times that the user has won
+
+//Create a score card to add the number of times that the computer has won
+
+//if neither user or computer wins, score should not be added (or add 0?)
+
+//Score scores should start at 0 
+
+//After each round, console should announce the winner
+
+//announcement should say you lose if lost and name the options you picked against computer
+
+//anouncement should say you won if won and name the options you picked against computer
+
+//announcement should say game is tied if human and computer pick the same option
+
+//game should be played in 5 rounds
+
+//after 5 rounds, a winner should be declared
+
+</script>
+</body>
+
+</html>
